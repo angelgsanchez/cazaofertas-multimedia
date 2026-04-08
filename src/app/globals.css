@@ -1,26 +1,45 @@
 @import "tailwindcss";
 
+@theme {
+  /* Colores del Figma */
+  --color-primary: #e2725b; /* Naranja/Coral */
+  --color-secondary: #8daa91; /* Verde suave */
+  --color-dark: #1a1a1a; /* Negro casi puro */
+  --color-light: #f9f9f7; /* Blanco roto/Gris muy claro */
+  --color-accent: #f4e3e0; /* Fondo rosado suave */
+
+  /* Fuentes configuradas en layout.tsx */
+  --font-display: var(--font-playfair); /* Playfair Display para títulos */
+  --font-sans: var(--font-lato); /* Lato para el cuerpo y botones */
+}
+
+/* Variables de sistema */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-accent);
+  --foreground: var(--color-dark);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Estilos base */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans); /* Lato por defecto */
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utilidades rápidas para seguir tu guía de estilo */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+button {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-transform: none; /* Lato en botones */
 }
