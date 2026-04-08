@@ -8,7 +8,7 @@ export const Footer = () => {
       </div>
 
       <div className="flex flex-col items-center gap-2">
-        <p className="text-[11px] font-bold tracking-[0.2em] text-light/50 uppercase">
+        <p className="text-[11px] font-bold tracking-[0.2em] text-light/40 uppercase">
           © 2026 CazaOfertas. Todos los derechos reservados.
         </p>
         <div className="flex gap-6 text-[10px] font-bold text-light/40">
