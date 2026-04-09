@@ -121,7 +121,7 @@ export const Navbar = () => {
           </>
         ) : (
           // ESTADO: LOGUEADO (Avatar + Username)
-          <Link href="/">
+          <Link href="/perfil">
             <div className="flex items-center gap-3 ml-4 cursor-pointer hover:opacity-80 transition-opacity">
               <div
                 className={`w-9 h-9 ${avatar.color} rounded-full flex items-center justify-center text-white font-bold text-sm shadow-inner`}
