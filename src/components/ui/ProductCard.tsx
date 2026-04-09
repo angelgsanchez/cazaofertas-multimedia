@@ -1,10 +1,39 @@
-export const ProductCard = () => {
+import Image from "next/image";
+import Link from "next/link";
+
+
+export const ProductCard = ({ index }: { index: number }) => {
+ // Alternamos datos para que se vea real como en tu imagen
+  const isShirt = index % 2 !== 0; 
+  const name = isShirt ? "Camisa" : "Pantalon";
+  const price = isShirt ? "$29.95" : "$19.22";
+  const imageSrc = isShirt ? "/camisa-negra.jpg" : "/jean-blue.png"; // Usa tus rutas reales
+  const queryString = `?name=${encodeURIComponent(name)}&price=${price}&image=${encodeURIComponent(imageSrc)}`;
+  
   return (
-    /* Quitamos el w-[256px] y usamos w-full */
-    <div className="bg-white border-[8px] border-white rounded-sm shadow-sm overflow-hidden flex flex-col group cursor-pointer transition-all hover:-translate-y-1 w-full h-[347px]">
-      <div className="flex-1 bg-light flex items-center justify-center group-hover:bg-[#f0f0f0] transition-colors relative">
-        <div className="w-12 h-12 opacity-5 bg-dark rounded-full" />
+    <Link href={`/details/${index}${queryString}`}>
+    <div className="bg-white cursor-pointer rounded-[20px] p-4 shadow-sm flex flex-col items-start w-full">
+      {/* Contenedor de Imagen */}
+      <div className="relative w-full h-32 mb-3 flex items-center justify-center">
+        <Image
+          src={imageSrc}
+          alt={name}
+          width={100}
+          height={100}
+          className="object-contain"
+          />
+      </div>
+      
+      {/* Información del Producto */}
+      <div className="flex flex-col items-start gap-0.5">
+        <span className="text-[11px] font-bold text-gray-800 leading-none">
+          {name}
+        </span>
+        <span className="text-[13px] font-black text-dark">
+          {price}
+        </span>
       </div>
     </div>
+          </Link>
   );
 };

@@ -13,19 +13,18 @@ export default function Home() {
 
       {/* 2. Contenido Principal */}
       <main className="flex-grow flex flex-col items-center gap-10 pt-10 pb-20 font-sans">
-        <div className="w-full max-w-[1200px] px-6 flex flex-col gap-10">
-          {/* SearchBar corregida (833px de ancho y foco limpio) */}
-          <div className="flex justify-center">
-            <SearchBar className="w-full max-w-[833px]" />
-          </div>
-
+        <div className="w-full px-6 flex flex-col gap-10">
           {/* Carrusel de Ofertas */}
           <HeroCarousel />
+
+          <div className=" w-full">
+            <SearchBar className="w-full" />
+          </div>
 
           {/* Grilla de Productos */}
           <section className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {Array.from({ length: 16 }).map((_, i) => (
-              <ProductCard key={i} />
+              <ProductCard key={i} index={i} />
             ))}
           </section>
         </div>

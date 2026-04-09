@@ -12,8 +12,8 @@ export default function Home() {
         <HeroCarousel />
 
         <section className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {Array.from({ length: 16 }).map((_, i) => (
-            <ProductCard key={i} />
+          {Array.from({ length: 2 }).map((_, i) => (            
+            <ProductCard key={i} index={i}/>
           ))}
         </section>
       </div>
