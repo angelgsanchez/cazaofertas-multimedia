@@ -15,12 +15,23 @@ export const NavbarUser = () => {
     <nav className="w-full bg-[#1A1A1A] text-white py-4 px-8 flex items-center md:justify-center top-0 fit shadow-md font-sans">
       {/* Logo */}
       <Link href="/" className="flex items-center group">
+        <div className="relative w-12 h-12 transition-transform group-hover:scale-105">
+          <Image
+            src="/logo.png"
+            alt="Logo Caza Ofertas"
+            height={72}
+            width={72}
+            priority
+          />
+        </div>
+      </Link>
+      {/* <Link href="/" className="flex items-center group">
         <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center transition-transform group-hover:scale-105">
           <span className="text-dark font-black text-[9px] leading-tight text-center p-1">
             CAZA <br /> OFERTAS
           </span>
         </div>
-      </Link>
+      </Link> */}
 
       {/* Menú Central */}
       {/* <div className="hidden md:flex gap-8">
