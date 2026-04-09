@@ -40,7 +40,7 @@ export const Navbar = () => {
         {navItems.map((item) => (
           <Link
             key={item.name}
-            href={item.href}
+            href={"/search"}
             className="
               group
               flex items-center justify-center
