@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -11,7 +9,7 @@ const playfair = Playfair_Display({
 
 const lato = Lato({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "700", "900"], // Añadí 900 para el peso 'Black' que podrías usar
   variable: "--font-lato",
 });
 
@@ -26,13 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body
-        className={`${playfair.variable} ${lato.variable} antialiased min-h-screen flex flex-col`}
-      >
-        <Navbar />
-        <div className="flex-grow">{children}</div>
-        <Footer />
+    <html lang="es" className={`${playfair.variable} ${lato.variable}`}>
+      <body className="antialiased min-h-screen">
+        {children}
       </body>
     </html>
   );

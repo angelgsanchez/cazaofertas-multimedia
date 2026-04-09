@@ -32,12 +32,21 @@ export const Navbar = () => {
       </div>
 
       <div className="flex gap-4">
-        <button className="bg-secondary text-dark px-5 py-2 rounded-lg text-[11px] font-bold hover:brightness-110 active:scale-95 transition-all">
-          Iniciar sesión
-        </button>
-        <button className="bg-primary text-white px-5 py-2 rounded-lg text-[11px] font-bold hover:brightness-110 active:scale-95 transition-all">
-          Registrarme
-        </button>
+        {/* Botón de Iniciar Sesión con fondo secundario (verde) */}
+        <Link 
+          href="/login" 
+          className="bg-secondary text-dark px-5 py-2 rounded-lg text-[11px] font-bold hover:brightness-110 active:scale-95 transition-all inline-block text-center"
+        >
+          INICIAR SESIÓN
+        </Link>
+
+        {/* Botón de Registro con fondo primario (coral/naranja) */}
+        <Link 
+          href="/register" 
+          className="bg-primary text-white px-5 py-2 rounded-lg text-[11px] font-bold hover:brightness-110 active:scale-95 transition-all inline-block text-center"
+        >
+          REGISTRARME
+        </Link>
       </div>
     </nav>
   );
