@@ -40,12 +40,12 @@ export default function ProfilePage() {
             <button className="bg-white rounded-xl p-4 flex items-center gap-4 shadow-sm active:scale-95 transition-transform text-dark font-bold">
               <span className="text-xl">❤️</span> Favoritos
             </button>
-            <button 
-              onClick={() => setMobileView("config")}
-              className="bg-white rounded-xl p-4 flex items-center gap-4 shadow-sm active:scale-95 transition-transform text-dark font-bold"
-            >
-              <span className="text-xl">⚙️</span> Configuracion
-            </button>
+            <Link 
+                href="/perfil-config" 
+                className="bg-white rounded-xl p-4 flex items-center gap-4 shadow-sm active:scale-95 transition-transform text-dark font-bold"
+                >
+                <span className="text-xl">⚙️</span> Configuracion
+            </Link>
             <Link href="/" className="bg-white rounded-xl p-4 flex items-center gap-4 shadow-sm active:scale-95 transition-transform text-red-600 font-bold">
               <span className="text-xl">🚪</span> Salir
             </Link>
