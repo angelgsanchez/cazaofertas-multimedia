@@ -6,7 +6,7 @@ export const Footer = () => {
           CAZA <br /> OFERTAS
         </span>
       </div>
-
+{/*realmente esto esta guardando lo que yo estoy subiendo? */}
       <div className="flex flex-col items-center gap-2">
         <p className="text-[11px] font-bold tracking-[0.2em] text-light/40 uppercase">
           © 2026 CazaOfertas. Todos los derechos reservados.
