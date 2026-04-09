@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 
 export const ProductCard = ({ index }: { index: number }) => {
@@ -7,9 +8,11 @@ export const ProductCard = ({ index }: { index: number }) => {
   const name = isShirt ? "Camisa" : "Pantalon";
   const price = isShirt ? "$29.95" : "$19.22";
   const imageSrc = isShirt ? "/camisa-negra.jpg" : "/jean-blue.png"; // Usa tus rutas reales
-
+  const queryString = `?name=${encodeURIComponent(name)}&price=${price}&image=${encodeURIComponent(imageSrc)}`;
+  
   return (
-    <div className="bg-white rounded-[20px] p-4 shadow-sm flex flex-col items-start w-full">
+    <Link href={`/details/${index}${queryString}`}>
+    <div className="bg-white cursor-pointer rounded-[20px] p-4 shadow-sm flex flex-col items-start w-full">
       {/* Contenedor de Imagen */}
       <div className="relative w-full h-32 mb-3 flex items-center justify-center">
         <Image
@@ -18,7 +21,7 @@ export const ProductCard = ({ index }: { index: number }) => {
           width={100}
           height={100}
           className="object-contain"
-        />
+          />
       </div>
       
       {/* Información del Producto */}
@@ -31,5 +34,6 @@ export const ProductCard = ({ index }: { index: number }) => {
         </span>
       </div>
     </div>
+          </Link>
   );
 };

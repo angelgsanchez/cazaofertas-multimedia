@@ -27,7 +27,8 @@ export const Navbar = () => {
           <Image
             src="/logo.png"
             alt="Logo Caza Ofertas"
-            fill
+            height={72}
+            width={72}
             className="object-contain"
             priority
           />
