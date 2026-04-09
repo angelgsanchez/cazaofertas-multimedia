@@ -1,0 +1,2 @@
+josedavidlozada17.04@gmail.com,123456,david,true
+unet@gmail.com,123456,mario,false
