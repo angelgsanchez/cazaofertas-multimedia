@@ -118,9 +118,15 @@ export default function ProfilePage() {
           <Link href="#" className="flex items-center gap-4 px-8 py-4 text-gray-600 hover:bg-gray-50 transition-colors text-sm font-medium">
             <span className="text-lg">❤️</span> Mis ofertas favoritas
           </Link>
-          <Link href="/" className="flex items-center gap-4 px-8 py-4 text-red-600 hover:bg-red-50 transition-colors text-sm font-medium mt-2">
+             {/* Botón de Logout pequeño */}
+            <button 
+              onClick={() => { localStorage.removeItem("user_session") }}
+            >
+            <Link href="/" className="flex items-center gap-4 px-8 py-4 text-red-600 hover:bg-red-50 transition-colors text-sm font-medium mt-2">
             <span className="text-lg">🚪</span> Cerrar Sesión
-          </Link>
+            </Link>
+            </button>
+          
         </nav>
       </aside>
 

@@ -1,85 +1,97 @@
-// Ruta: src/app/login/page.tsx
-// Usamos "use client" porque los formularios suelen necesitar interactividad
+// Ruta: src/app/register/page.tsx
 "use client"; 
 
+import { useState } from "react";
 import Link from "next/link";
 
-export default function LoginPage() {
+export default function RegisterPage() {
+  // Estado para capturar los datos del formulario
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    isMerchant: false,
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    // Enviamos los datos a nuestra API interna
+    const response = await fetch("api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    console.log(JSON.stringify(formData));
+    
+    if (response.ok) {
+      alert("Usuario registrado con éxito en data.txt");
+    }
+  };
+
   return (
-    // 1. Fondo de toda la página (color 'accent' de tu paleta, rosado suave)
     <div className="flex flex-col items-center justify-center min-h-screen bg-accent p-4 font-sans text-dark">
-      
-      {/* 2. Título principal fuera de la tarjeta */}
       <h1 className="text-3xl font-bold mb-10 mt-10 text-dark/90">Registrarse</h1>
 
-      {/* 3. La tarjeta blanca principal */}
       <div className="w-full max-w-sm bg-white p-10 rounded-xl shadow-xl shadow-dark/5 border border-dark/5">
-        
-        <form className="flex flex-col gap-6">
-
-          {/* 4. Campo: Nombre */}
+        <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+          
           <div className="flex flex-col gap-2">
-            <label htmlFor="name" className="text-[16px] font-bold text-dark/80">
-              Nombre
-            </label>
+            <label className="text-[16px] font-bold text-dark/80">Nombre</label>
             <input 
-              id="name"
               type="text" 
+              required
               placeholder="Tu nombre completo" 
-              className="w-full px-4 py-3 border border-dark/15 rounded-lg text-sm text-dark placeholder:text-dark/40 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition"
+              className="w-full px-4 py-3 border border-dark/15 rounded-lg text-sm focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none"
+              onChange={(e) => setFormData({...formData, name: e.target.value})}
             />
           </div>  
           
-          {/* 4. Campo: Correo */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-[16px] font-bold text-dark/80">
-              Correo
-            </label>
+            <label className="text-[16px] font-bold text-dark/80">Correo</label>
             <input 
-              id="email"
               type="email" 
+              required
               placeholder="ejemplo@gmail.com" 
-              className="w-full px-4 py-3 border border-dark/15 rounded-lg text-sm text-dark placeholder:text-dark/40 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition"
+              className="w-full px-4 py-3 border border-dark/15 rounded-lg text-sm focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none"
+              onChange={(e) => setFormData({...formData, email: e.target.value})}
             />
           </div>
 
-          {/* 5. Campo: Contraseña */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="password" className="text-[16px] font-bold text-dark/80">
-              Contraseña
-            </label>
+            <label className="text-[16px] font-bold text-dark/80">Contraseña</label>
             <input 
-              id="password"
               type="password" 
+              required
               placeholder="**********" 
-              className="w-full px-4 py-3 border border-dark/15 rounded-lg text-sm text-dark placeholder:text-dark/40 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition"
+              className="w-full px-4 py-3 border border-dark/15 rounded-lg text-sm focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none"
+              onChange={(e) => setFormData({...formData, password: e.target.value})}
             />
           </div>
 
-          {/* 6. Enlaces de ayuda (¿No tienes cuenta? / ¿Quieres comerciar?) */}
-          <div className="flex flex-col gap-3 text-center text-base text-dark/70 font-medium">
-            <p>
-              ¿Ya tienes una cuenta? {' '}
-              <Link href="/login" className="font-bold text-dark hover:text-primary transition-colors underline underline-offset-2">
-                Ingresar
-              </Link>
-            </p>
-            <p>
-              ¿Eres comerciante? {' '}
-              <Link href="/login-merchant" className="font-bold text-dark hover:text-primary transition-colors underline underline-offset-2">
-                Ingresar
-              </Link>
-            </p>
+          {/* CHECKBOX: Soy comerciante */}
+          <div className="flex items-center gap-3">
+            <input 
+              type="checkbox" 
+              id="merchant"
+              className="w-5 h-5 accent-primary cursor-pointer"
+              onChange={(e) => setFormData({...formData, isMerchant: e.target.checked})}
+            />
+            <label htmlFor="merchant" className="text-sm font-bold text-dark/70 cursor-pointer">
+              Soy comerciante
+            </label>
           </div>
 
-          {/* 7. Botón principal (color 'primary' de tu paleta, naranja/coral) */}
-          <Link 
-            href="/common" 
-            className="w-full bg-primary text-white font-bold py-3 rounded-lg text-base hover:brightness-110 active:scale-[0.98] transition-all mt-3 text-center block"
+          <button 
+            type="submit"
+            className="w-full bg-primary text-white font-bold py-3 rounded-lg text-base hover:brightness-110 active:scale-[0.98] transition-all mt-3"
           >
-            Iniciar sesion
-          </Link>
+            Registrarse
+          </button>
 
+          <div className="text-center text-sm text-dark/70">
+            ¿Ya tienes una cuenta? <Link href="/login" className="font-bold text-dark underline">Ingresar</Link>
+          </div>
         </form>
       </div>
     </div>
