@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { ProductCard }from "@/components/ui/ProductCard";
 
 export default function ProductDetailsPage() {
   return (
