@@ -23,10 +23,10 @@ export const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: "HOMBRES", href: "#" },
-    { name: "MUJERES", href: "#" },
-    { name: "NIÑOS", href: "#" },
-    { name: "ACCESORIOS", href: "#" },
+    { name: "HOMBRES", href: "/hombres" },
+    { name: "MUJERES", href: "/mujeres" },
+    { name: "NIÑOS", href: "/ninos" },
+    { name: "ACCESORIOS", href: "/accesorios" },
   ];
 
   // 2. Función para obtener la inicial y el color del avatar
@@ -74,12 +74,29 @@ export const Navbar = () => {
       {/* MENÚ CENTRAL */}
       <div className="hidden md:flex gap-8">
         {navItems.map((item) => (
-          <button
+          <Link
             key={item.name}
-            className="text-[11px] font-bold tracking-[0.2em] text-white/70 hover:text-light transition-colors"
+            href={item.href}
+            className="
+              group
+              flex items-center justify-center
+              /* Ajustamos a 130px de ancho para que el texto separado quepa bien */
+              w-[130px] h-[36px] rounded-[8px]
+              bg-transparent transition-all duration-300
+              hover:bg-[#F9F9F7]
+            "
           >
-            {item.name}
-          </button>
+            <span
+              className="
+              /* Texto más grande (12px) y más separado (0.3em) */
+              text-[12px] font-bold uppercase tracking-[0.3em] 
+              text-white transition-colors duration-300 
+              group-hover:text-dark
+            "
+            >
+              {item.name}
+            </span>
+          </Link>
         ))}
       </div>
 

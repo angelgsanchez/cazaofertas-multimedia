@@ -12,7 +12,7 @@ export default function ProfilePage() {
 
   return (
     // Contenedor principal: Fondo rosado en móvil, gris en escritorio
-    <div className="min-h-screen bg-accent md:bg-[#f5f5f5] font-sans flex flex-col md:flex-row">
+    <div className="min-h-screen bg-accent md:bg-accent font-sans flex flex-col md:flex-row">
       
       {/* =========================================
           VERSIÓN MÓVIL (Se oculta en pantallas grandes)
