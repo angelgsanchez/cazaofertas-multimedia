@@ -12,7 +12,6 @@ export default function MainLayout({
       <main className="flex-grow">
         {children}
       </main>
-      <Footer />
     </div>
   );
 }

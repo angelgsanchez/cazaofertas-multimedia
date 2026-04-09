@@ -25,7 +25,7 @@ export default function Home() {
           {/* Grilla de Productos */}
           <section className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {Array.from({ length: 16 }).map((_, i) => (
-              <ProductCard key={i} />
+              <ProductCard key={i} index={i}/>
             ))}
           </section>
         </div>

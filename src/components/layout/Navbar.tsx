@@ -3,24 +3,13 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useAuth } from "@/app/hooks/useAuth";
 
 export const Navbar = () => {
-  const [user, setUser] = useState<any>(null);
+  // const [user, setUser] = useState<any>(null);
+  const { user, avatar, logout } = useAuth();
 
-  // 1. Cargar el usuario desde el localStorage al montar el componente
-  useEffect(() => {
-    const checkUser = () => {
-      const savedUser = localStorage.getItem("user_session");
-      if (savedUser) {
-        setUser(JSON.parse(savedUser));
-      }
-    };
 
-    checkUser();
-    // Escuchamos cambios por si el usuario hace login en otra pestaña
-    window.addEventListener("storage", checkUser);
-    return () => window.removeEventListener("storage", checkUser);
-  }, []);
 
   const navItems = [
     { name: "HOMBRES", href: "/hombres" },
@@ -29,32 +18,6 @@ export const Navbar = () => {
     { name: "ACCESORIOS", href: "/accesorios" },
   ];
 
-  // 2. Función para obtener la inicial y el color del avatar
-  const getAvatarContent = () => {
-    if (!user) return { char: "", color: "bg-gray-500" };
-
-    const name = user.name || user.email;
-    const char = name.charAt(0).toUpperCase();
-
-    const colors: { [key: string]: string } = {
-      A: "bg-red-500",
-      B: "bg-blue-500",
-      C: "bg-green-500",
-      D: "bg-yellow-600",
-      E: "bg-purple-500",
-      F: "bg-pink-500",
-      G: "bg-indigo-500",
-      H: "bg-orange-500",
-      J: "bg-[#e91e63]", 
-    };
-
-    return {
-      char,
-      color: colors[char] || "bg-primary",
-    };
-  };
-
-  const avatar = getAvatarContent();
 
   return (
     <nav className="w-full bg-dark text-white py-4 px-8 flex items-center justify-between sticky top-0 z-50 shadow-md font-sans">
